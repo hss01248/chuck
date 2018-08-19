@@ -20,15 +20,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
 import com.readystatesoftware.chuck.Chuck;
 import com.readystatesoftware.chuck.ChuckInterceptor;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,5 +97,10 @@ public class MainActivity extends AppCompatActivity {
         api.deny().enqueue(cb);
         api.cache("Mon").enqueue(cb);
         api.cache(30).enqueue(cb);
+
+        Map<String,String> params = new HashMap<>();
+        params.put("dd","youjnk");
+        params.put("yuso","nodsno");
+        api.executePost(params).enqueue(cb);
     }
 }

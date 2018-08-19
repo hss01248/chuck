@@ -16,19 +16,17 @@
 package com.readystatesoftware.chuck.internal.data;
 
 import android.net.Uri;
-
 import com.google.gson.reflect.TypeToken;
 import com.readystatesoftware.chuck.internal.support.FormatUtils;
 import com.readystatesoftware.chuck.internal.support.JsonConvertor;
+import nl.qbusict.cupboard.annotation.Index;
+import okhttp3.Headers;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import nl.qbusict.cupboard.annotation.Index;
-import okhttp3.Headers;
 
 public class HttpTransaction {
 
@@ -363,7 +361,7 @@ public class HttpTransaction {
         } else if (contentType != null && contentType.toLowerCase().contains("xml")) {
             return FormatUtils.formatXml(body);
         } else {
-            return body;
+             return FormatUtils.formatKeyValues(body);
         }
     }
 

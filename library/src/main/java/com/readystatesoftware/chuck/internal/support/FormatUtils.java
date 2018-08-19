@@ -17,19 +17,12 @@ package com.readystatesoftware.chuck.internal.support;
 
 import android.content.Context;
 import android.text.TextUtils;
-
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.readystatesoftware.chuck.R;
 import com.readystatesoftware.chuck.internal.data.HttpHeader;
 import com.readystatesoftware.chuck.internal.data.HttpTransaction;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-
 import org.xml.sax.InputSource;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.util.List;
-import java.util.Locale;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
@@ -37,6 +30,11 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.stream.StreamResult;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.net.URLDecoder;
+import java.util.List;
+import java.util.Locale;
 
 public class FormatUtils {
 
@@ -142,5 +140,16 @@ public class FormatUtils {
 
     private static String v(String string) {
         return (string != null) ? string : "";
+    }
+
+    public static String formatKeyValues(String body) {
+        if(TextUtils.isEmpty(body)){
+            return "";
+        }
+        String str = URLDecoder.decode(body);
+        str = str.replace("&","\n");
+        str = str.replace("="," : ");
+        return str;
+
     }
 }

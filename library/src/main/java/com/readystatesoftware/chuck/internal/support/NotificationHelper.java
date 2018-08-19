@@ -24,8 +24,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.LongSparseArray;
-
+import android.support.v4.util.LongSparseArray;
 import com.readystatesoftware.chuck.Chuck;
 import com.readystatesoftware.chuck.R;
 import com.readystatesoftware.chuck.internal.data.HttpTransaction;
